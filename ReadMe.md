@@ -4,7 +4,6 @@ Today you are challenged with creating a Trade API, that allows RESTful request 
 
 The two domain objects you must create are as follows:
 
-
 ![](./uml.png)
 
 
