@@ -1,25 +1,37 @@
-package com.codedifferently.tradeapichallenge.trade;
+package com.codedifferently.tradeapichallenge.trade.models;
 
 import com.codedifferently.tradeapichallenge.user.User;
 
+import javax.persistence.*;
+import java.util.List;
+import java.util.Objects;
+
+@Entity
 public class Trade {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String type;
-    private User user;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<User> user;
+
     private String symbol;
     private Integer shares;
     private Double price;
 
     public Trade(){}
 
-    public Trade(String type, User user, String symbol, Integer shares, Double price){
+    public Trade(String type, List<User> user, String symbol, Integer shares, Double price){
         this.type = type;
         this.user = user;
         this.symbol = symbol;
         this.shares = shares;
         this.price = price;
     }
-    public Trade(Long id, String type, User user, String symbol, Integer shares, Double price){
+    public Trade(Long id, String type, List<User> user, String symbol, Integer shares, Double price){
         this.id = id;
         this.type = type;
         this.user = user;
@@ -44,11 +56,11 @@ public class Trade {
         this.type = type;
     }
 
-    public User getUser() {
+    public List<User> getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(List<User> user) {
         this.user = user;
     }
 
@@ -75,6 +87,20 @@ public class Trade {
     public void setPrice(Double price) {
         this.price = price;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Trade trade = (Trade) o;
+        return Objects.equals(id, trade.id) && Objects.equals(user, trade.user);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, user);
+    }
+
 
     @Override
     public String toString() {

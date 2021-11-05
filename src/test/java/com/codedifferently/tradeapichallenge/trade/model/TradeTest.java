@@ -1,4 +1,4 @@
-package com.codedifferently.tradeapichallenge.trade;
+package com.codedifferently.tradeapichallenge.trade.model;
 
 import com.codedifferently.tradeapichallenge.trade.models.Trade;
 import com.codedifferently.tradeapichallenge.user.User;

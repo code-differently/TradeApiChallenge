@@ -1,17 +1,21 @@
-package com.codedifferently.tradeapichallenge.services;
+package com.codedifferently.tradeapichallenge.trade.services;
 
-import com.codedifferently.tradeapichallenge.trade.Trade;
+import com.codedifferently.tradeapichallenge.trade.models.Trade;
+import com.codedifferently.tradeapichallenge.trade.exceptions.TradeNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface TradeService {
+
     Trade create(Trade trade);
-    Trade getTradetById(Integer id) throws WidgetNotFoundException;
+
+    Trade getTradeByUser(String userName) throws TradeNotFoundException;
     List<Trade> getAllTrade();
-    Trade updateTrade(Integer id, Trade trade) throws WidgetNotFoundException;
-    Boolean deleteTradet(Integer id) throws WidgetNotFoundException;
+
+    Trade updateTrade(String userName, Trade trade) throws TradeNotFoundException;
+
+    Boolean deleteTrade(String userName) throws TradeNotFoundException;
 
 
 }
