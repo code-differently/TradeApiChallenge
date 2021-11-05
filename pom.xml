@@ -14,7 +14,7 @@
 	<name>TradeAPIChallenge</name>
 	<description>TradeAPIChallenge</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>16</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -29,7 +29,7 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
+			<scope>1.4.200</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
