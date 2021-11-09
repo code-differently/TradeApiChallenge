@@ -62,20 +62,20 @@ public class PersonServiceTest {
         Assertions.assertIterableEquals(tradesList,responseTrade);
     }
 
-//    @Test
-//    @DisplayName("Trade Service Get All By userName")
-//    public void getAllTradesByUserNameRequestTest() throws Exception {
-//
-//        List<Trade> tradesList = new ArrayList<>();
-//        tradesList.add(new Trade("buy", inputUser, "DD", 9, 180.95));
-//        tradesList.add(new Trade("buy", inputUser, "AB", 12, 209.95));
-//
-//        BDDMockito.doReturn(tradesList).when(tradeRepo).findTradeByUserName("Rajon");
-//
-//        List<Trade> responseTrade = tradeService.getTradeByUserName("Rajon");
-//
-//        Assertions.assertIterableEquals(tradesList,responseTrade);
-//    }
+    @Test
+    @DisplayName("Trade Service Get All By userName")
+    public void getAllTradesByUserNameRequestTest() throws Exception {
+
+        List<Trade> tradesList = new ArrayList<>();
+        tradesList.add(new Trade("buy", inputUser, "DD", 9, 180.95));
+        tradesList.add(new Trade("buy", inputUser, "AB", 12, 209.95));
+
+        BDDMockito.doReturn(tradesList).when(tradeRepo).findTradeByUserName("Rajon");
+
+        List<Trade> responseTrade = tradeService.getTradeByUserName();
+
+        Assertions.assertIterableEquals(tradesList,responseTrade);
+    }
 
     @Test
     @DisplayName("Trade Service Create Trade")
@@ -93,13 +93,9 @@ public class PersonServiceTest {
     @DisplayName("Trade Service Update Trade")
     public void updateTradeTestSuccess() throws TradeNotFoundException {
 
-        List<Trade> trades = new ArrayList<>();
-        trades.add(new Trade("buy", inputUser, "BB", 12, 189.95));
-        trades.add(new Trade("buy", inputUser, "CC", 10, 150.95));
+        Trade expecteTradeUpdate = new Trade("buy", inputUser, "CC", 10, 150.95);
 
-        Trade expecteTradeUpdate = new Trade();
-
-        BDDMockito.doReturn(Optional.of(mockResponseTrade1)).when(tradeRepo).findById(1L);
+        BDDMockito.doReturn(mockResponseTrade1).when(tradeRepo).findById(1L);
         BDDMockito.doReturn(expecteTradeUpdate).when(tradeRepo).save(ArgumentMatchers.any());
 
         Trade actualTrade = tradeService.updateTrade(1L, expecteTradeUpdate);
